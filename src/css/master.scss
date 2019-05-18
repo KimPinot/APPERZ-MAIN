@@ -1,0 +1,1037 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400');
+@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
+$main-color: #0eb493;
+$noto: 'NOTO SANS KR'; // Begin Global Setting
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $noto, sans-serif;
+
+    .apperz {
+        color: $main-color;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .apperz:hover {
+        opacity: 0.7;
+    }
+    // 수직 선
+    .horizon {
+        display: flex;
+        justify-content: center;
+        color: #888;
+    }
+
+    .horizon::after,
+    .horizon::before {
+        margin: 0 15px;
+        color: inherit;
+        content: "ㅡㅡㅡㅡㅡㅡㅡㅡ";
+        letter-spacing: -3px;
+        position: relative;
+        top: -5px;
+    }
+    // 본문 기본 서식
+    .article {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 100px 0 20px;
+
+        h1 {
+            color: $main-color;
+            margin: 0 0 20px;
+            font-size: 30px;
+        }
+
+        p {
+            word-break: keep-all;
+            margin: 10px 0 25px;
+            line-height: 1.5;
+            opacity: 0.7;
+        }
+    }
+    // 에러 컬러
+    .error {
+        color: #ff0000;
+        font-size: 12px;
+        transition: 0.3s;
+        text-align: left;
+        word-break: keep-all;
+    }
+    // icon
+    .icon {
+        display: inline-block;
+        margin: 5px;
+        border: solid 1px #000;
+        border-radius: 50%;
+        width: 2em;
+        line-height: 2em;
+        text-align: center;
+        font-size: 20px;
+        padding: 3px;
+        transition: 0.3s;
+    }
+
+    .icon:hover {
+        background-color: rgba(0,0,0,0.2);
+    }
+    // hide
+    .hide {
+        display: none;
+    }
+    // 버튼 디자인
+    .button {
+        span {
+            font-weight: 400;
+            word-break: keep-all;
+        }
+
+        input {
+            display: none;
+        }
+
+        label.fa:before {
+            content: "\f00c";
+            margin-right: 1.5px;
+            border: solid 1px $main-color;
+            color: $main-color;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 12px;
+            vertical-align: middle;
+            transition: 0.3s;
+        }
+
+        input:checked ~ label:before {
+            background: $main-color;
+            color: #fff;
+        }
+    }
+}
+
+.goog-te-gadget-simple {
+    display: none;
+}
+
+body {
+    overflow-x: hidden;
+
+    .skiptranslate {
+        iframe {
+            display: none;
+        }
+    }
+}
+// Hover Tool
+
+.hover-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .div {
+        position: relative;
+        float: left;
+        width: 200px;
+        height: 200px;
+        margin: 20px 10px;
+    }
+
+    .div:hover {
+        .hover {
+            opacity: 1;
+        }
+    }
+
+    .img {
+        width: inherit;
+        height: inherit;
+    }
+
+    img {
+        border-radius: 25px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: 0.3s;
+
+        ul {
+            list-style: none;
+
+            li {
+                color: #fff;
+                margin: 5px 0;
+                word-break: keep-all;
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            .icon {
+                font-size: 14px;
+                border-color: #fff;
+                transition: 0.3s;
+            }
+
+            .icon:hover {
+                background-color: rgba(0,0,0,0.3);
+            }
+        }
+    }
+}
+// End Global Setting
+// Begin Loader
+
+#loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+
+    .loader {
+        border: 8px solid #e7e7e7;
+        border-top: 8px solid $main-color;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+// End Loader
+// Begin Header
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background: $main-color;
+
+    .container {
+        margin: 2.5px 0;
+
+        .logo {
+            img {
+                height: 66px;
+                width: 200px;
+            }
+        }
+
+        .header-menu {
+            ul {
+                list-style: none;
+            }
+
+            a {
+                display: block;
+                padding: 15px 25px;
+                text-decoration: none;
+                font-size: 15px;
+                color: black;
+                transition: 0.3s;
+            }
+
+            a:hover {
+                background-color: rgba(0,0,0,0.3);
+            }
+        }
+    }
+    // Begin Header PC
+    @media screen and (min-width: 768px) {
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 985px;
+            margin: 0 auto;
+            padding: 0 15px;
+
+            .header-menu {
+                display: block !important;
+
+                ul {
+                    display: flex;
+                }
+
+                a {
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 25px;
+                }
+            }
+
+            .mobile {
+                #button {
+                    display: none;
+                }
+            }
+        }
+    }
+    // End Header PC
+    // Begin Header Mobile
+    @media screen and (max-width: 767px) {
+        .container {
+            align-items: center;
+            margin: 0 15px;
+
+            ul {
+                background-color: rgba(255,255,255,0.5);
+            }
+
+            .header_background {
+                width: 100vw;
+                height: 100vh;
+                display: block;
+            }
+
+            .mobile {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                button {
+                    padding: 0;
+                    border: none;
+                    outline: none;
+                    background: none;
+                    font-size: 25px;
+                    opacity: 0.6;
+                    cursor: pointer;
+                }
+
+                button:hover {
+                    opacity: 0.3;
+                }
+            }
+
+            .header-menu {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                z-index: 99;
+                width: 100%;
+            }
+        }
+    }
+    // End Header Mobile
+}
+// End Header
+// Begin Main Section
+
+#main {
+    // 크기 설정
+    width: 100vw;
+    height: 100vh;
+    // 배경 설정
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../img/index/main_bg.jpg");
+    background-position: center;
+    background-size: cover;
+    // 아이템 정렬 설정
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // 글자 설정
+    color: white;
+    text-align: center;
+
+    .container {
+        h1 {
+            font-size: 10vw;
+        }
+
+        h3 {
+            font-size: 5vw;
+            margin: 0 0 10px;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+            opacity: 0.7;
+        }
+
+        .main-horizon::after,
+        .main-horizon::before {
+            margin: 0 15px;
+            content: "ㅡㅡ";
+            letter-spacing: -5px;
+            color: $main-color;
+        }
+        // PC 설정
+        @media screen and (min-width: 768px) {
+            h1 {
+                font-size: 76.8px;
+            }
+
+            h3 {
+                font-size: 38.4px;
+            }
+
+            p {
+                font-size: 24px;
+            }
+        }
+        // SNS DIV 설정
+        .sns {
+            ul {
+                margin: 10px 0 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                list-style: none;
+
+                li:not(:last-child) {
+                    margin-right: 15px;
+                }
+
+                a {
+                    color: #fff;
+                    font-size: 16px;
+                    transition: 0.3s;
+                }
+
+                a:hover {
+                    opacity: 0.3;
+                }
+            }
+        }
+    }
+}
+// End Main Section
+// Begin Intro Section
+
+#intro {
+    .container {
+        .text-wrapper {
+            padding: 40px 0 20px;
+
+            .text {
+                text-align: center;
+                padding: 0 20px 60px;
+
+                h3 {
+                    margin: 20px 0;
+                    font-size: 20px;
+                }
+
+                p {
+                    margin: 0 0 20px;
+                    font-size: 14px;
+                    line-height: 1.8;
+                    opacity: 0.8;
+                }
+
+                .icon {
+                    border-color: $main-color;
+                    color: $main-color;
+                }
+            }
+            @media screen and (min-width: 768px) {
+                display: flex;
+
+                .text {
+                    flex: 1;
+                }
+            }
+        }
+    }
+}
+// End Intro Section
+// Begin Crew Section
+
+#crew {
+    .container {
+        .duty {
+            color: #f1c40f;
+        }
+
+        ol {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+
+            li.select {
+                text-align: center;
+                font-size: 15px;
+                line-height: 1.8;
+                opacity: 0.8;
+                cursor: pointer;
+                margin: 0 5px;
+                padding: 5px 10px;
+                transition: 0.3s;
+            }
+
+            li.active,
+            li:hover {
+                background-color: #0eb493;
+                color: #fff;
+                border-radius: 50px;
+            }
+        }
+    }
+}
+// End Crew Section
+// Begin Project Section
+
+#project {
+    .project {
+        .div {
+            height: 250px;
+            width: 225px;
+
+            h1 {
+                color: #fff;
+                font-size: 20px;
+            }
+        }
+    }
+}
+// End Project Section
+// Begin Contact Section
+
+#contact {
+    .container {
+        .contact_wrapper {
+            display: flex;
+        }
+        // 내부 폼
+        .form {
+            margin: 10px;
+            flex: 9;
+
+            ul {
+                margin: 10px;
+                list-style: none;
+
+                li {
+                    text-align: right;
+                    padding: 10px;
+
+                    .text {
+                        border: solid 1px #888;
+                        outline: none;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        border-radius: 20px;
+                        font-size: 14px;
+                        background: #fff;
+                        width: 100%;
+                        padding: 10px;
+                        color: #2a2a2a !important;
+                    }
+
+                    .text:focus {
+                        border: solid 1px $main-color;
+                    }
+
+                    .long {
+                        min-height: 200px;
+                        max-height: 500px;
+                        resize: vertical;
+                    }
+
+                    .submit {
+                        input {
+                            transition: 0.3s;
+                            cursor: pointer;
+                            border: solid 1px #888;
+                            background: #fff;
+                            padding: 5px 10px;
+                            border-radius: 25px;
+                            outline: none;
+                        }
+
+                        input:hover {
+                            background-color: rgba(0,0,0,0.2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// End Contact Section
+// FOOTER START
+
+footer {
+    color: #fff;
+    background-color: $main-color;
+    width: 100%;
+
+    .container {
+        padding: 40px 20px;
+
+        .logo {
+            img {
+                height: 66px;
+                width: 200px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            a {
+                color: #fff;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+
+            a:hover {
+                color: #b0b0b0;
+            }
+        }
+
+        .menu {
+            div {
+                margin: 0 0 20px;
+
+                h3 {
+                    margin: 0 0 10px;
+                    border-bottom: solid 1px #fff;
+                    font-size: 20px;
+                }
+
+                ul {
+                    list-style: none;
+
+                    li {
+                        &:not(#google_translate_element) {
+                            a {
+                                transition: 0.3s;
+                                display: block;
+                                padding: 5px;
+                                color: #fff;
+                                font-size: 12px;
+                                text-decoration: none;
+                            }
+
+                            a:hover {
+                                background-color: rgba(0,0,0,0.3);
+                            }
+                        }
+
+                        &#google_translate_element {
+                            div:first-child {
+                                margin: 0;
+
+                                select {
+                                    color: #000;
+                                    width: 100%;
+                                    transition: 0.3s;
+                                    cursor: pointer;
+                                    border: solid 1px #888;
+                                    background: #fff;
+                                    padding: 5px 10px;
+                                    border-radius: 25px;
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .ccl {
+            width: 100%;
+
+            p {
+                font-size: 12px;
+                text-align: center;
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+                a:focus,
+                a:hover {
+                    animation-duration: 3s;
+                    animation-name: rainbow;
+                    animation-iteration-count: infinite;
+                }
+                @keyframes rainbow {
+                    0% {
+                        color: #ff2a2a;
+                    }
+
+                    15% {
+                        color: #ff7a2a;
+                    }
+
+                    30% {
+                        color: #ffc52a;
+                    }
+
+                    45% {
+                        color: #43ff2a;
+                    }
+
+                    60% {
+                        color: #2a89ff;
+                    }
+
+                    75% {
+                        color: #202082;
+                    }
+
+                    90% {
+                        color: #6b2aff;
+                    }
+
+                    100% {
+                        color: #e82aff;
+                    }
+                }
+            }
+        }
+
+        .sns {
+            margin: 20px 0 0;
+
+            ul {
+                display: flex;
+                list-style: none;
+
+                a {
+                    color: #fff;
+
+                    .icon {
+                        transition: 0.3s;
+                        font-size: 16px;
+                        border-color: #fff;
+                    }
+
+                    .icon:hover {
+                        background-color: rgba(0,0,0,0.3);
+                    }
+                }
+            }
+        }
+        @media screen and (min-width: 768px) {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+
+            .logo {
+                flex: 0 0 60%;
+            }
+
+            .menu {
+                flex: 0 0 35%;
+                display: flex;
+            }
+
+            .sns {
+                flex: 0 0 100%;
+            }
+
+            .menu {
+                div {
+                    flex: 1;
+                }
+            }
+
+            .menu:not(:last-child) {
+                margin: 0 40px 0 0;
+            }
+        }
+    }
+}
+// 지원 폼 CSS 시작
+
+#apply {
+    .container {
+        .form_wrapper {
+            width: 100%;
+            text-align: right;
+
+            p {
+                text-align: center;
+            }
+
+            .text {
+                border: solid 1px #888;
+                outline: none;
+                font-family: 'Noto Sans KR', sans-serif;
+                border-radius: 20px;
+                font-size: 14px;
+                background: #fff;
+                width: 100%;
+                padding: 10px;
+                color: #2a2a2a !important;
+            }
+
+            .text:focus {
+                border-color: $main-color;
+            }
+
+            .filebox input[type="file"] {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0,0,0,0);
+                border: 0;
+            }
+
+            .filebox label {
+                display: inline-block;
+                padding: 0.5em 0.75em;
+                color: #999;
+                font-size: inherit;
+                line-height: normal;
+                vertical-align: middle;
+                background-color: #fdfdfd;
+                cursor: pointer;
+                border: 1px solid #ebebeb;
+                border-bottom-color: #e2e2e2;
+                border-radius: 0.25em;
+            }
+            /* named upload */
+            .filebox .upload-name {
+                display: inline-block;
+                padding: 0.5em 0.75em;
+                font-size: inherit;
+                font-family: inherit;
+                line-height: normal;
+                vertical-align: middle;
+                background-color: #f5f5f5;
+                border: 1px solid #ebebeb;
+                border-bottom-color: #e2e2e2;
+                border-radius: 0.25em;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+            }
+
+            .filebox.bs3-primary label {
+                color: #fff;
+                background-color: #337ab7;
+                border-color: #2e6da4;
+            }
+
+            .wrapper {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                @media screen and (max-width: 1000px) {
+                    padding: 0 15px;
+                }
+
+                .select-wrap {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    div {
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin: 5px;
+                        width: 50%;
+
+                        select {
+                            margin: 0;
+                            min-width: 100%;
+                        }
+                    }
+                }
+
+                .text-wrap {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    div {
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin: 5px;
+                        flex: 1 1 75%;
+                    }
+                }
+            }
+
+            .long-wrap {
+                @media screen and (max-width: 1000px) {
+                    padding: 0 15px;
+                }
+
+                .long {
+                    width: calc(100% - 22px);
+                    min-height: 200px;
+                    max-height: 500px;
+                    resize: vertical;
+                }
+            }
+        }
+
+        .button_wrapper {
+            margin-top: 20px;
+            padding: 0 15px;
+
+            .button {
+                margin: 5px 0;
+            }
+        }
+
+        .submit {
+            input {
+                transition: 0.3s;
+                cursor: pointer;
+                border: solid 1px #888;
+                background: #fff;
+                padding: 5px 10px;
+                border-radius: 25px;
+                outline: none;
+            }
+
+            input:hover {
+                background-color: rgba(0,0,0,0.2);
+            }
+        }
+    }
+}
+
+.apply_modal {
+    position: fixed;
+    z-index: 75;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: 0.3s;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    .modal_bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal_content {
+        z-index: 76;
+        background: #fff;
+        padding: 45px 30px;
+        border: solid 1px $main-color;
+        border-radius: 26px;
+
+        p {
+            margin: 30px 0 0;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        .modal_content {
+            width: 80%;
+            padding: 45px 20px;
+        }
+    }
+}
+
+#policy {
+    .container {
+        text-align: left;
+        padding: 100px 20px 50px;
+
+        h1 {
+            text-align: center;
+        }
+
+        .text {
+            margin: 25px 0;
+
+            ol,
+            ul {
+                list-style: none;
+            }
+
+            a {
+                color: #000;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+
+            a:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+// Scroll Bar
+
+html {
+    scrollbar-arrow-color: #333333;
+    scrollbar-base-color: #fff;
+    scrollbar-3dlight-color: #fff;
+    scrollbar-darkshadow-color: #fff;
+    scrollbar-face-color: #333333;
+    scrollbar-highlight-color: #fff;
+    scrollbar-shadow-color: #fff;
+    scrollbar-track-color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+    border: 0;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 2px;
+    width: 50px;
+    background: #333333;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
